@@ -13,11 +13,11 @@ import prody as pr
 
 import torch.nn.functional as F
 
-from datasets.conformer_matching import get_torsion_angles, optimize_rotatable_bonds
-from datasets.constants import aa_short2long, atom_order, three_to_one
-from datasets.parse_chi import get_chi_angles, get_coords, aa_idx2aa_short, get_onehot_sequence
-from utils.torsion import get_transformation_mask
-from utils.logging_utils import get_logger
+from diffdock.datasets.conformer_matching import get_torsion_angles, optimize_rotatable_bonds
+from diffdock.datasets.constants import aa_short2long, atom_order, three_to_one
+from diffdock.datasets.parse_chi import get_chi_angles, get_coords, aa_idx2aa_short, get_onehot_sequence
+from diffdock.utils.torsion import get_transformation_mask
+from diffdock.utils.logging_utils import get_logger
 
 
 periodic_table = GetPeriodicTable()

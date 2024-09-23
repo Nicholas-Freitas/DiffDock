@@ -1,4 +1,4 @@
-from spyrmsd import rmsd, molecule
+from diffdock.spyrmsd import rmsd, molecule
 
 def get_symmetry_rmsd(mol, coords1, coords2, mol2=None, return_permutation=False):
     with time_limit(10):

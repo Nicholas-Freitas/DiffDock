@@ -6,9 +6,9 @@ from typing import Tuple, Optional, Dict
 
 import gradio as gr
 
-import mol_viewer
-import run_utils
-from run_utils import PROJECT_URL, PROJECT_DIR, TEMP_DIR
+import diffdock.app.mol_viewer as mol_viewer
+import diffdock.app.run_utils as run_utils
+from diffdock.app.run_utils import PROJECT_URL, PROJECT_DIR, TEMP_DIR
 
 DEFAULT_INFERENCE_ARGS = os.path.join(PROJECT_DIR, "default_inference_args.yaml")
 

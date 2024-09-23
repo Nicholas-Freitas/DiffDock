@@ -3,7 +3,7 @@ from typing import List, Optional, Union
 
 import numpy as np
 
-from spyrmsd import constants, graph, utils
+from diffdock.spyrmsd import constants, graph, utils
 
 
 class Molecule:

@@ -5,7 +5,7 @@ from scipy.spatial.transform import Rotation as R
 from torch_geometric.utils import to_networkx
 from torch_geometric.data import Data
 
-from utils.geometry import rigid_transform_Kabsch_independent_torch, axis_angle_to_matrix
+from diffdock.utils.geometry import rigid_transform_Kabsch_independent_torch, axis_angle_to_matrix
 
 """
     Preprocessing and computation for torsional updates to conformers

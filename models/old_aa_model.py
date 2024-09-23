@@ -7,10 +7,10 @@ from torch_scatter import scatter, scatter_mean
 import numpy as np
 from e3nn.nn import BatchNorm
 
-from models.layers import GaussianSmearing, OldAtomEncoder, AtomEncoder
-from models.tensor_layers import OldTensorProductConvLayer
-from utils import so3, torus
-from datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
+from diffdock.models.layers import GaussianSmearing, OldAtomEncoder, AtomEncoder
+from diffdock.models.tensor_layers import OldTensorProductConvLayer
+from diffdock.utils import so3, torus
+from diffdock.datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
 
 AGGREGATORS = {"mean": lambda x: torch.mean(x, dim=1),
                "max": lambda x: torch.max(x, dim=1)[0],

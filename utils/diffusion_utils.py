@@ -5,8 +5,8 @@ import torch.nn.functional as F
 from torch import nn
 from scipy.stats import beta
 
-from utils.geometry import axis_angle_to_matrix, rigid_transform_Kabsch_3D_torch, rigid_transform_Kabsch_3D_torch_batch
-from utils.torsion import modify_conformer_torsion_angles, modify_conformer_torsion_angles_batch
+from diffdock.utils.geometry import axis_angle_to_matrix, rigid_transform_Kabsch_3D_torch, rigid_transform_Kabsch_3D_torch_batch
+from diffdock.utils.torsion import modify_conformer_torsion_angles, modify_conformer_torsion_angles_batch
 
 
 def sigmoid(t):

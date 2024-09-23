@@ -15,11 +15,11 @@ from torch_geometric.data import Dataset, Data
 from torch_geometric.loader import DataLoader
 from tqdm import tqdm
 
-from datasets.pdbbind import PDBBind
-from utils.diffusion_utils import get_t_schedule
-from utils.sampling import randomize_position, sampling
-from utils.utils import get_model
-from utils.diffusion_utils import t_to_sigma as t_to_sigma_compl
+from diffdock.datasets.pdbbind import PDBBind
+from diffdock.utils.diffusion_utils import get_t_schedule
+from diffdock.utils.sampling import randomize_position, sampling
+from diffdock.utils.utils import get_model
+from diffdock.utils.diffusion_utils import t_to_sigma as t_to_sigma_compl
 
 
 class ListDataset(Dataset):

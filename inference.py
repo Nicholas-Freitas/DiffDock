@@ -24,15 +24,15 @@ from rdkit import RDLogger
 from rdkit.Chem import RemoveAllHs
 
 # TODO imports are a little odd, utils seems to shadow things
-from utils.logging_utils import configure_logger, get_logger
-import utils.utils
-from datasets.process_mols import write_mol_with_coords
-from utils.download import download_and_extract
-from utils.diffusion_utils import t_to_sigma as t_to_sigma_compl, get_t_schedule
-from utils.inference_utils import InferenceDataset, set_nones
-from utils.sampling import randomize_position, sampling
-from utils.utils import get_model
-from utils.visualise import PDBFile
+from diffdock.utils.logging_utils import configure_logger, get_logger
+import diffdock.utils.utils
+from diffdock.datasets.process_mols import write_mol_with_coords
+from diffdock.utils.download import download_and_extract
+from diffdock.utils.diffusion_utils import t_to_sigma as t_to_sigma_compl, get_t_schedule
+from diffdock.utils.inference_utils import InferenceDataset, set_nones
+from diffdock.utils.sampling import randomize_position, sampling
+from diffdock.utils.utils import get_model
+from diffdock.utils.visualise import PDBFile
 from tqdm import tqdm
 
 if os.name != 'nt':  # The line does not work on Windows
@@ -56,7 +56,8 @@ REMOTE_URLS = [f"{REPOSITORY_URL}/releases/latest/download/diffdock_models.zip",
 
 def get_parser():
     parser = ArgumentParser()
-    parser.add_argument('--config', type=FileType(mode='r'), default='default_inference_args.yaml')
+    module_dir = os.path.dirname(os.path.abspath(__file__))
+    parser.add_argument('--config', type=FileType(mode='r'), default=os.path.join(module_dir, 'default_inference_args.yaml'))
     parser.add_argument('--protein_ligand_csv', type=str, default=None, help='Path to a .csv file specifying the input as described in the README. If this is not None, it will be used instead of the --protein_path, --protein_sequence and --ligand parameters')
     parser.add_argument('--complex_name', type=str, default=None, help='Name that the complex will be saved with')
     parser.add_argument('--protein_path', type=str, default=None, help='Path to the protein file')

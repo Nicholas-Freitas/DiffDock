@@ -11,7 +11,7 @@ from e3nn.nn import BatchNorm
 from e3nn.o3 import TensorProduct, Linear
 from torch_scatter import scatter, scatter_mean
 
-from models.layers import FCBlock
+from diffdock.models.layers import FCBlock
 
 
 def get_irrep_seq(ns, nv, use_second_order_repr, reduce_pseudoscalars):

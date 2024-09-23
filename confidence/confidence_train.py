@@ -13,13 +13,13 @@ from sklearn.metrics import roc_auc_score
 from torch_geometric.loader import DataListLoader, DataLoader
 from tqdm import tqdm
 
-from confidence.dataset import ConfidenceDataset
-from utils.training import AverageMeter
+from diffdock.confidence.dataset import ConfidenceDataset
+from diffdock.utils.training import AverageMeter
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
 import yaml
-from utils.utils import save_yaml_file, get_optimizer_and_scheduler, get_model
+from diffdock.utils.utils import save_yaml_file, get_optimizer_and_scheduler, get_model
 
 
 parser = ArgumentParser()

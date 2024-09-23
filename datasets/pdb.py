@@ -16,10 +16,10 @@ from torch_geometric.data import Dataset, HeteroData
 from torch_geometric.utils import subgraph
 from tqdm import tqdm
 
-from datasets.constants import aa_to_cg_indices, amino_acid_smiles, cg_rdkit_indices
-from datasets.parse_chi import aa_long2short, atom_order
-from datasets.process_mols import new_extract_receptor_structure, get_lig_graph, generate_conformer
-from utils.torsion import get_transformation_mask
+from diffdock.datasets.constants import aa_to_cg_indices, amino_acid_smiles, cg_rdkit_indices
+from diffdock.datasets.parse_chi import aa_long2short, atom_order
+from diffdock.datasets.process_mols import new_extract_receptor_structure, get_lig_graph, generate_conformer
+from diffdock.utils.torsion import get_transformation_mask
 
 
 def read_strings_from_txt(path):

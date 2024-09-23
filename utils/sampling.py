@@ -6,11 +6,11 @@ import torch
 from torch_geometric.data import Batch
 from torch_geometric.loader import DataLoader
 
-from utils.diffusion_utils import modify_conformer, set_time, modify_conformer_batch
-from utils.torsion import modify_conformer_torsion_angles
+from diffdock.utils.diffusion_utils import modify_conformer, set_time, modify_conformer_batch
+from diffdock.utils.torsion import modify_conformer_torsion_angles
 from scipy.spatial.transform import Rotation as R
-from utils.utils import crop_beyond
-from utils.logging_utils import get_logger
+from diffdock.utils.utils import crop_beyond
+from diffdock.utils.logging_utils import get_logger
 
 
 def randomize_position(data_list, no_torsion, no_random, tr_sigma_max, pocket_knowledge=False, pocket_cutoff=7,

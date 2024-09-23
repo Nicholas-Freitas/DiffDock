@@ -16,10 +16,10 @@ from torch_geometric.transforms import BaseTransform
 from tqdm import tqdm
 from rdkit.Chem import RemoveAllHs
 
-from datasets.process_mols import read_molecule, get_lig_graph_with_matching, generate_conformer, moad_extract_receptor_structure
-from utils.diffusion_utils import modify_conformer, set_time
-from utils.utils import read_strings_from_txt, crop_beyond
-from utils import so3, torus
+from diffdock.datasets.process_mols import read_molecule, get_lig_graph_with_matching, generate_conformer, moad_extract_receptor_structure
+from diffdock.utils.diffusion_utils import modify_conformer, set_time
+from diffdock.utils.utils import read_strings_from_txt, crop_beyond
+from diffdock.utils import so3, torus
 
 
 class NoiseTransform(BaseTransform):

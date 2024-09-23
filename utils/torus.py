@@ -28,16 +28,19 @@ SIGMA_MIN, SIGMA_MAX, SIGMA_N = 3e-3, 2, 5000  # relative to pi
 x = 10 ** np.linspace(np.log10(X_MIN), 0, X_N + 1) * np.pi
 sigma = 10 ** np.linspace(np.log10(SIGMA_MIN), np.log10(SIGMA_MAX), SIGMA_N + 1) * np.pi
 
-if os.path.exists('.p.npy'):
-    p_ = np.load('.p.npy')
-    score_ = np.load('.score.npy')
+# Get the directory of the current module
+module_dir = os.path.dirname(os.path.abspath(__file__))
+
+if os.path.exists(os.path.join(module_dir, '.p.npy')):
+    p_ = np.load(os.path.join(module_dir, '.p.npy'))
+    score_ = np.load(os.path.join(module_dir, '.score.npy'))
 else:
     p_ = p(x, sigma[:, None], N=100)
-    np.save('.p.npy', p_)
+    np.save(os.path.join(module_dir, '.p.npy'), p_)
 
     eps = np.finfo(p_.dtype).eps
     score_ = grad(x, sigma[:, None], N=100) / (p_ + eps)
-    np.save('.score.npy', score_)
+    np.save(os.path.join(module_dir, '.score.npy'), score_)
 
 
 def score(x, sigma):

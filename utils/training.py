@@ -6,10 +6,10 @@ from tqdm import tqdm
 import torch
 
 from confidence.dataset import ListDataset
-from utils import so3, torus
-from utils.molecules_utils import get_symmetry_rmsd
-from utils.sampling import randomize_position, sampling
-from utils.diffusion_utils import get_t_schedule
+from diffdock.utils import so3, torus
+from diffdock.utils.molecules_utils import get_symmetry_rmsd
+from diffdock.utils.sampling import randomize_position, sampling
+from diffdock.utils.diffusion_utils import get_t_schedule
 
 
 def loss_function(tr_pred, rot_pred, tor_pred, sidechain_pred, data, t_to_sigma, device, tr_weight=1, rot_weight=1,

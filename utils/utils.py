@@ -14,11 +14,11 @@ from torch import nn, Tensor
 from torch_geometric.nn.data_parallel import DataParallel
 from torch_geometric.utils import degree, subgraph
 
-from models.aa_model import AAModel
-from models.cg_model import CGModel
-from models.old_aa_model import AAOldModel
-from models.old_cg_model import CGOldModel
-from utils.diffusion_utils import get_timestep_embedding
+from diffdock.models.aa_model import AAModel
+from diffdock.models.cg_model import CGModel
+from diffdock.models.old_aa_model import AAOldModel
+from diffdock.models.old_cg_model import CGOldModel
+from diffdock.utils.diffusion_utils import get_timestep_embedding
 
 
 def get_obrmsd(mol1_path, mol2_path, cache_name=None):

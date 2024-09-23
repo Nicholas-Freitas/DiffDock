@@ -4,7 +4,7 @@ from collections import defaultdict
 import prody as pr
 import os
 
-from datasets.constants import chi, atom_order, aa_long2short, aa_short2aa_idx, aa_idx2aa_short
+from diffdock.datasets.constants import chi, atom_order, aa_long2short, aa_short2aa_idx, aa_idx2aa_short
 
 
 def get_dihedral_indices(resname, chi_num):
@@ -61,7 +61,7 @@ def batch_compute_dihedral_angles(sidechains):
 
 def get_coords(prody_pdb):
     resindices = sorted(set(prody_pdb.ca.getResindices()))
-    coords = np.full((len(resindices), 14, 3), np.nan)
+    coords = np.zeros((len(resindices), 14, 3))
     for i, resind in enumerate(resindices):
         sel = prody_pdb.select(f'resindex {resind}')
         resname = sel.getResnames()[0]

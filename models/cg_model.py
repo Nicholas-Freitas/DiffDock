@@ -10,10 +10,10 @@ from torch_cluster import radius, radius_graph
 from torch_scatter import scatter, scatter_mean
 import numpy as np
 
-from models.layers import GaussianSmearing, AtomEncoder
-from models.tensor_layers import TensorProductConvLayer, get_irrep_seq
-from utils import so3, torus
-from datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
+from diffdock.models.layers import GaussianSmearing, AtomEncoder
+from diffdock.models.tensor_layers import TensorProductConvLayer, get_irrep_seq
+from diffdock.utils import so3, torus
+from diffdock.datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
 
 
 class CGModel(torch.nn.Module):

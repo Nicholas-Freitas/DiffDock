@@ -9,10 +9,10 @@ from torch_scatter import scatter, scatter_mean
 import numpy as np
 from e3nn.nn import BatchNorm
 
-from models.layers import OldAtomEncoder, AtomEncoder, GaussianSmearing
-from models.tensor_layers import OldTensorProductConvLayer
-from utils import so3, torus
-from datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
+from diffdock.models.layers import OldAtomEncoder, AtomEncoder, GaussianSmearing
+from diffdock.models.tensor_layers import OldTensorProductConvLayer
+from diffdock.utils import so3, torus
+from diffdock.datasets.process_mols import lig_feature_dims, rec_residue_feature_dims, rec_atom_feature_dims
 
 
 class CGOldModel(torch.nn.Module):
