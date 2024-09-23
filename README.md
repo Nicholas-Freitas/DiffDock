@@ -1,4 +1,6 @@
 # DiffDock: Diffusion Steps, Twists, and Turns for Molecular Docking
+This fork is for refactoring DiffDock to be pip-installable.
+
 [![Open in HuggingFace](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/reginabarzilaygroup/DiffDock-Web)
 
 
