@@ -7,8 +7,8 @@ import torch
 import prody as pr
 import esm
 
-from datasets.process_mols import generate_conformer, read_molecule, get_lig_graph_with_matching, moad_extract_receptor_structure
-from datasets.parse_chi import aa_idx2aa_short, get_onehot_sequence
+from diffdock.datasets.process_mols import generate_conformer, read_molecule, get_lig_graph_with_matching, moad_extract_receptor_structure
+from diffdock.datasets.parse_chi import aa_idx2aa_short, get_onehot_sequence
 
 
 def get_sequences_from_pdbfile(file_path):

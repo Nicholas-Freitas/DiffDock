@@ -25,7 +25,6 @@ RUN ~/bin/micromamba env create --file $ENV_FILE_NAME && ~/bin/micromamba clean 
 # Copy application code
 COPY --chown=$APPUSER:$APPUSER . $HOME/$DIR_NAME
 
-
 # Stage 2: Runtime Environment
 FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
 
@@ -40,10 +39,12 @@ ENV ENV_NAME="diffdock"
 ENV DIR_NAME="DiffDock"
 
 # Copy the Conda environment and application code from the builder stage
-COPY --from=builder --chown=$APPUSER:$APPUSER $HOME/micromamba $HOME/micromamba
+COPY --from=builder --chown=$APPUSER:$APPUSER $HOME/.local/share/mamba/envs $HOME/micromamba/envs
 COPY --from=builder --chown=$APPUSER:$APPUSER $HOME/bin $HOME/bin
 COPY --from=builder --chown=$APPUSER:$APPUSER $HOME/$DIR_NAME $HOME/$DIR_NAME
 WORKDIR $HOME/$DIR_NAME
+
+RUN ls $HOME && ls $HOME/$DIR_NAME && sleep 10
 
 # Set the environment variables
 ENV MAMBA_ROOT_PREFIX=$HOME/micromamba
@@ -51,10 +52,10 @@ ENV PATH=$HOME/bin:$HOME/.local/bin:$PATH
 RUN micromamba shell init -s bash --root-prefix $MAMBA_ROOT_PREFIX
 
 # Precompute series for SO(2) and SO(3) groups
-RUN micromamba run -n ${ENV_NAME} python utils/precompute_series.py
+RUN micromamba run -n ${ENV_NAME} python diffdock/utils/precompute_series.py
 
 # Expose ports for streamlit and gradio
 EXPOSE 7860 8501
 
 # Default command
-CMD ["sh", "-c", "micromamba run -n ${ENV_NAME} python utils/print_device.py"]
+CMD ["sh", "-c", "micromamba run -n ${ENV_NAME} python diffdock/utils/print_device.py"]
