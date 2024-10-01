@@ -110,10 +110,10 @@ def run_cli_command(
         env=os.environ,
     )
     logging.debug(f"Device check output:\n{result.stdout}")
-
+    
     command = [
         "python3",
-        "inference.py"]
+        os.path.join(PROJECT_DIR, "inference.py")]
 
     command += kwargs_to_cli_args(**all_arg_dict)
 

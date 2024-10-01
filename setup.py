@@ -20,4 +20,10 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
+    entry_points={
+        'console_scripts': [
+            'diffdock=diffdock.inference:entry_point',
+            'diffdock-app=diffdock.app.main:entry_point',
+        ],
+    },
 )

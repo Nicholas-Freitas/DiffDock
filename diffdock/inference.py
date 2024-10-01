@@ -1,7 +1,7 @@
-import functools
+#import functools
 import logging
-import pprint
-import traceback
+#import pprint
+#import traceback
 from argparse import ArgumentParser, Namespace, FileType
 import copy
 import os
@@ -14,6 +14,9 @@ import yaml
 # Ignore pandas deprecation warning around pyarrow
 warnings.filterwarnings("ignore", category=DeprecationWarning,
                         message="(?s).*Pyarrow will become a required dependency of pandas.*")
+from Bio import BiopythonDeprecationWarning
+warnings.filterwarnings("ignore", category=BiopythonDeprecationWarning, message="Bio.pairwise2 is deprecated.")
+
 
 import numpy as np
 import pandas as pd
@@ -25,7 +28,7 @@ from rdkit.Chem import RemoveAllHs
 
 # TODO imports are a little odd, utils seems to shadow things
 from diffdock.utils.logging_utils import configure_logger, get_logger
-import diffdock.utils.utils
+#import diffdock.utils.utils
 from diffdock.datasets.process_mols import write_mol_with_coords
 from diffdock.utils.download import download_and_extract
 from diffdock.utils.diffusion_utils import t_to_sigma as t_to_sigma_compl, get_t_schedule
@@ -313,7 +316,9 @@ def main(args):
         logger.info(result_msg)
     logger.info(f"Results saved in {args.out_dir}")
 
-
-if __name__ == "__main__":
+def entry_point():
     _args = get_parser().parse_args()
     main(_args)
+
+if __name__ == "__main__":
+    entry_point()

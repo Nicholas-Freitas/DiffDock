@@ -27,8 +27,12 @@ def run_wrapper(protein_pdb_id, protein_file, ligand_smile, ligand_file, config_
 
     config_path = config_file['name'] if config_file else DEFAULT_INFERENCE_ARGS
     ligand_desc = ligand_file['name'] if ligand_file else ligand_smile
+
+    # Get current directory:
+    current_dir = os.getcwd() # A new directory called "work_dir" will be created in this directory.
+    
     output_file = run_utils.run_cli_command(
-        protein_file_name, ligand_desc, config_path, *args,
+        protein_file_name, ligand_desc, config_path, *args, work_dir=current_dir,
     )
 
     message = f"Calculation completed at {datetime.datetime.now()}"
@@ -67,8 +71,18 @@ def update_view(view_selector_content, view_result_selector, default_str="Output
         return view_selector_content.get(view_result_selector, default_str)
     return default_str
 
+def get_examples_dir():
+    # Get the module file's directory
+    module_dir = os.path.dirname(__file__)
+    # Traverse up two directories
+    examples_dir = os.path.abspath(os.path.join(module_dir, '..', '..', 'examples'))
+
+    return examples_dir
+
 
 def run():
+
+    examples_dir = get_examples_dir()
 
     with gr.Blocks(title="DiffDock Web") as demo:
         gr.Markdown("# DiffDock Web")
@@ -113,49 +127,49 @@ def run():
                         [
                             [
                                 "6w70",
-                                "examples/6w70.pdb",
+                                os.path.join(examples_dir, "6w70.pdb"),
                                 "COc1ccc(cc1)n2c3c(c(n2)C(=O)N)CCN(C3=O)c4ccc(cc4)N5CCCCC5=O",
-                                "examples/6w70_ligand.sdf",
+                                os.path.join(examples_dir, "6w70_ligand.sdf"),
                                 10,
                                 True
                             ],
                             [
                                 "6moa",
-                                "examples/6moa_protein_processed.pdb",
+                                os.path.join(examples_dir,"6moa_protein_processed.pdb"),
                                 "",
-                                "examples/6moa_ligand.sdf",
+                                os.path.join(examples_dir,"6moa_ligand.sdf"),
                                 10,
                                 True
                             ],
                             [
                                 "",
-                                "examples/6o5u_protein_processed.pdb",
+                                os.path.join(examples_dir,"6o5u_protein_processed.pdb"),
                                 "",
-                                "examples/6o5u_ligand.sdf",
+                                os.path.join(examples_dir,"6o5u_ligand.sdf"),
                                 10,
                                 True
                             ],
                             [
                                 "",
-                                "examples/6o5u_protein_processed.pdb",
+                                os.path.join(examples_dir,"6o5u_protein_processed.pdb"),
                                 "[NH3+]C[C@H]1O[C@H](O[C@@H]2[C@@H]([NH3+])C[C@H]([C@@H]([C@H]2O)O[C@H]2O[C@H](CO)[C@H]([C@@H]([C@H]2O)[NH3+])O)[NH3+])[C@@H]([C@H]([C@@H]1O)O)O",
-                                "examples/6o5u_ligand.sdf",
+                                os.path.join(examples_dir,"6o5u_ligand.sdf"),
                                 10,
                                 True
                             ],
                             [
                                 "",
-                                "examples/6o5u_protein_processed.pdb",
+                                os.path.join(examples_dir,"6o5u_protein_processed.pdb"),
                                 "",
-                                "examples/6o5u_ligand.sdf",
+                                os.path.join(examples_dir,"6o5u_ligand.sdf"),
                                 10,
                                 True
                             ],
                             [
                                 "",
-                                "examples/6ahs_protein_processed.pdb",
+                                os.path.join(examples_dir,"6ahs_protein_processed.pdb"),
                                 "",
-                                "examples/6ahs_ligand.sdf",
+                                os.path.join(examples_dir,"6ahs_ligand.sdf"),
                                 10,
                                 True
                             ],
@@ -198,9 +212,10 @@ def run():
     server_port = int(os.environ.get("GRADIO_SERVER_PORT", "7860"))
     demo.launch(server_name="0.0.0.0", server_port=server_port, share=False)
 
-
-if __name__ == "__main__":
+def entry_point():
     run_utils.set_env_variables()
     run_utils.configure_logging()
-
     run()
+
+if __name__ == "__main__":
+    entry_point()
