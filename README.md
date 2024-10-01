@@ -78,7 +78,7 @@ To set up an appropriate environment, navigate to the root of the repository and
     conda env create --file environment.yml
     conda activate diffdock
 
-See [conda documentation](https://conda.io/projects/conda/en/latest/commands/env/create.html) for more information.
+If this takes more than ~3 minutes, consider [upgrading your conda solver](https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community).
 
 ### Using a Docker container
 
@@ -121,7 +121,7 @@ An example .csv is at `data/protein_ligand_example.csv` and you would use it wit
 
 And you are ready to run inference:
 
-    python -m inference --config default_inference_args.yaml  --protein_ligand_csv data/protein_ligand_example.csv --out_dir results/user_predictions_small 
+    diffdock --config diffdock/default_inference_args.yaml  --protein_ligand_csv data/protein_ligand_example.csv --out_dir results/user_predictions_small 
 
 When providing the `.pdb` files you can run DiffDock also on CPU, however, if possible, we recommend using a GPU as the model runs significantly faster. Note that the first time you run DiffDock on a device the program will precompute and store in cache look-up tables for SO(2) and SO(3) distributions (typically takes a couple of minutes), this won't be repeated in following runs.  
 
@@ -129,7 +129,7 @@ When providing the `.pdb` files you can run DiffDock also on CPU, however, if po
 
 We provide a simple graphical user interface to run DiffDock on a single complex. To use it, run the following command:
 
-    python app/main.py
+    diffdock-app
 
 and navigate to http://localhost:7860 in your browser. 
 
