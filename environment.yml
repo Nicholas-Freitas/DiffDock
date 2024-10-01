@@ -176,4 +176,4 @@ dependencies:
       - uvicorn==0.30.6
       - websockets==11.0.3
       - yarl==1.9.7
-      #- openfold @ git+https://github.com/aqlaboratory/openfold.git
+      #- openfold @ git+https://github.com/aqlaboratory/openfold.git@6f63267114435f94ac0604b6d89e82ef45d94484
